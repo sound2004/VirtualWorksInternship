@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Card Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>User Profile Card Generator</h1>
+
+        <form action="/generate-profile" method="POST">
+            <input type="text" name="name" placeholder="Enter Name" required>
+            <textarea name="bio" placeholder="Enter Bio" required></textarea>
+            <input type="url" name="image_url" placeholder="Enter Image URL" required>
+            <button type="submit">Generate Profile</button>
+        </form>
+
+        {% if profile %}
+        <div class="profile-card">
+            <img src="{{ profile.image_url }}" alt="Profile Image">
+            <h2>{{ profile.name }}</h2>
+            <p>{{ profile.bio }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
