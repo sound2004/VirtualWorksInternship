@@ -1,0 +1,11 @@
+flask
+Flask-SQLAlchemy
+flask-login
+flask-wtf 
+flask-limiter
+passlib
+markupsafe
+datetime
+Jinja2
+Werkzeug
+python3

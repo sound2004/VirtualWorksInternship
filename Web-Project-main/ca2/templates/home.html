@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+<h1 align="center">Your Notes!</h1>
+<h1 class="mb-4">Welcome, {{ user.first_name | escape }} {{ user.surname | escape }}!</h1>
+<ul class="list-group list-group-flush" id="notes">
+  {% for note in user.notes %}
+  <li class="list-group-item" id="note-{{ note.id }}">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="note-content">
+        {{ note.data }}
+      </div>
+      <div class="update-form" style="display: none;">
+        <input type="text" id="update-input-{{ note.id }}" class="form-control" value="{{ note.data }}">
+        <button class="btn btn-sm btn-success mt-2" onclick="saveNoteUpdate({{ note.id }})">Save</button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-info mr-2" onClick="updateNote({{ note.id }})">
+          Edit
+        </button>
+        <button type="button" class="btn btn-sm btn-danger" onClick="deleteNote({{ note.id }})">
+          Delete
+        </button>
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<form method="POST" action="{{ url_for('views.home') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <textarea name="note" id="note" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </div>
+</form>
+{% endblock %}
