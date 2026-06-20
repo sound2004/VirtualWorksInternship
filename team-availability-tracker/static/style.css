@@ -1,0 +1,7 @@
+
+body{font-family:Arial;background:#f4f4f4;padding:30px}
+.container{max-width:800px;margin:auto}
+.card{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:15px;margin:10px 0;border-radius:10px}
+.available{color:green;font-weight:bold}
+.unavailable{color:red;font-weight:bold}
+button{background:#007bff;color:#fff;border:none;padding:10px 15px;border-radius:5px}
